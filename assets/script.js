@@ -15,11 +15,12 @@ var dataRef = new Firebase("https://rps-multiplayer2437.firebaseio.com/");
 
 function addPlayer(){
 	$("#addName").on('click', function(){
-		players++;
 		if (players===0){
 			name1 = $("#name-input").val().trim();
 			$("#player1").html(name1 + 
-				"<br>Choose rock, paper, or scissors!");
+				"<br>Choose <class='weapon' id='rock'>rock</a>" + 
+					", <class='weapon' id='paper'>paper</a>" + 
+						", or <a href='' class='weapon' id='scissors'>scissors</a>!");
 
 			dataRef.push({
 				name: name1,
@@ -31,7 +32,9 @@ function addPlayer(){
 		if (players===1){
 			name2 = $("#name-input").val().trim();
 			$("#player2").html(name2 + 
-				"<br>Choose rock, paper, or scissors!");
+				"<br>Choose <class='weapon' id='rock'>rock</a>" + 
+					", <class='weapon' id='paper'>paper</a>" + 
+						", or <class='weapon' id='scissors'>scissors</a>!"); 
 
 			dataRef.push({
 				name: name2,
@@ -40,11 +43,20 @@ function addPlayer(){
 				losses: losses2
 			});
 		}
+		players++;
 		return false;	
 	});	
 }
+//================================================
+
+function selectRock(){
+	$(".playerBox").on('click', '#rock', function(){
+		
+	});
+}
 
 //================================================
+
 $(document).ready(function(){
 	addPlayer();
 });
